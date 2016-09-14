@@ -1,0 +1,66 @@
+<div class="pages navbar-through">
+  <!-- Pag has additional "with-subnavbar" class -->
+  <div data-page="event_list" class="page with-subnavbar navbar-fixed toolbar-fixed">
+    <div class="navbar theme-indigo">
+      <div class="navbar-inner">
+        <div class="left"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+        <div class="center">Events</div>
+        <div class="right">
+           <!-- <a href="#" class="item-link icon-only open-popup" data-popup=".popup-createevent">
+              <i class="icon icon-plus"></i>
+           </a> -->
+           <a href="chat_list.html" class="link item-link icon-only">
+              <i class="fa fa-commenting" aria-hidden="true"></i>
+           </a>
+        </div>
+      </div>
+      <div class="subnavbar theme-blue">
+        <div class="buttons-row">
+          <a href="#my_events" class="button tab-link active" style="font-weight:bold;">My Events</a>
+          <a href="#other_events" class="button tab-link" style="font-weight:bold;">Other Events</a>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="page-content hide-bars-on-scroll pull-to-refresh-content" data-ptr-distance="65"> -->
+    <div id="my_other_event_list" class="page-content pull-to-refresh-content" data-ptr-distance="65">
+      <div id="eventlistloader">
+        <div id="eventliststatus">&nbsp;</div>
+      </div>
+      <div class="pull-to-refresh-layer">
+        <div class="preloader"></div>
+        <div class="pull-to-refresh-arrow"></div>
+      </div>
+      <div class="tabs">
+        <div id="my_events" class="tab active">
+          <div id="content_my_events">
+            <!-- <div class="content-block-title"><b>My Events</b></div> -->
+            <div class="list-block media-list">
+              <ul id="my_event_list">
+              </ul>
+            </div>
+            <!-- Preloader -->
+            <!-- <div class="infinite-scroll-preloader">
+              <div class="preloader"></div>
+            </div> -->
+          </div>
+        </div>
+        <div id="other_events" class="tab">
+          <div id="content_other_events">
+            <!-- <div class="content-block-title"><b>Other Events</b></div> -->
+            <div class="list-block media-list">
+              <ul id="other_event_list">
+              </ul>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <a href="#" class="floating-button color-pink open-popup" data-popup=".popup-createevent" style="margin-bottom:35px;">
+      <i class="icon icon-plus"></i>
+    </a>
+    <div class="toolbar toolbar-bottom theme-gray">
+      <div class="toolbar-inner"><a id="link_event_list" href="event_list.html" class="link"><i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i></a><a href="event_latest.html" class="link"><img src="img/small-logo.png" width="23px" height="23px"></a><a href="profile.html" class="link"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+  <div class="page navbar-fixed toolbar-fixed" data-page="event_list">
+    <div class="navbar theme-indigo">
+      <div class="navbar-inner">
+        <div class="left"><a href="index.html" class="link icon-only"><i class="icon icon-back"></i></a></div>
+        <div class="center">Events</div>
+        <div class="right" style="margin-right:10px;">
+           <a href="#" class="item-link icon-only open-popup" data-popup=".popup-createevent">
+              <i class="icon icon-plus">+</i>
+           </a>
+           <a href="#" class="item-link icon-only open-popup" data-popup=".popup-createevent">
+              <i class="icon icon-message">+</i>
+           </a>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div id="content_my_events">
+        <div class="content-block-title"><b>My Events</b></div>
+        <div class="list-block media-list">
+          <ul id="my_event_list">
+          </ul>
+        </div>
+      </div>
+      <div id="content_other_events">
+        <div class="content-block-title"><b>Other Events</b></div>
+        <div class="list-block media-list">
+          <ul id="other_event_list">
+          </ul>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+

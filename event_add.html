@@ -1,0 +1,112 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
+    <div class="center sliding">Create</div>
+    <div class="right">
+      <!-- Right link contains only icon - additional "icon-only" class-->
+      <!-- <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a> -->
+    </div>
+  </div>
+</div>
+<div class="pages" class="navbar-through">
+  <div data-page="event_add" class="page">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <br />
+      <div class="content-block">
+        <div class="list-block inset">
+          <ul>
+            <li>
+                <div class="item-content">
+                  <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                  <div class="item-inner"> 
+                    <div id="image-upload" onclick="getImage();" align="center">
+                      <img id="pimage" class="fit center" src="http://115.85.17.61/test/event.jpg" class="upload-event" />
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="item-content">
+                  <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                  <div class="item-inner"> 
+                    <!-- <div class="item-title label">Name</div> -->
+                    <div class="item-input">
+                      <input id="txt-eventname" type="text" placeholder="I feel like..." required="required" />
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="item-content">
+                  <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                  <div class="item-inner"> 
+                    <!-- <div class="item-title label">Name</div> -->
+                    <div class="item-input">
+                      <input id="txt-eventdate" type="date" placeholder="Date" required="required" />
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="item-content">
+                  <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                  <div class="item-inner"> 
+                    <!-- <div class="item-title label">Name</div> -->
+                    <div class="item-input">
+                      <input id="txt-location" type="text" placeholder="Location" required="required" />
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="item-content">
+                  <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                  <div class="item-inner"> 
+                    <!-- <div class="item-title label">Name</div> -->
+                    <div class="item-input">
+                      <input id="txt-eventdescription" type="text" placeholder="Description" />
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="item-content">
+                  <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                  <div class="item-inner"> 
+                    <div class="item-title label">With people between:</div>
+                    <div class="item-input">
+                      <input id="txt-age" type="text" />
+                    </div>
+                  </div>
+                </div>
+              </li>
+               <li>
+                <div class="item-content">
+                  <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                  <div class="item-inner"> 
+                    <div class="item-title label">Max participants:</div>
+                    <div class="item-input">
+                      <input id="txt-participants" type="text" />
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="content-block">
+              <div class="row">
+                <div class="col-50">
+                  <a href="" id="btn-createevent" class="button button-big button-fill color-green">Create</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

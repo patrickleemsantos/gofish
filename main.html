@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Go Fish</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <!-- <link rel="stylesheet" href="css/kitchen-sink.css"> -->
+    <!-- Ion range slider -->
+   <!--  <link rel="stylesheet" type="text/css" href="css/ion.rangeSlider.css">
+    <link rel="stylesheet" type="text/css" href="css/ion.rangeSlider.skinHTML5.css"> -->
+    <!-- jQuery date & time picker -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css" />
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="font/raleway.css"> -->
+    <link href="font/didactgothic.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Didact Gothic', sans-serif;
+        }
+
+        /*.accelerateMe {
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }*/
+
+        .login-screen .view .page .page-content {
+            background: #1e5799;
+            background: -moz-linear-gradient(top,  #1e5799 0%, #207cca 44%, #207cca 44%, #2989d8 50%, #7db9e8 73%, #7db9e8 73%, #7db9e8 87%);
+            background: -webkit-linear-gradient(top,  #1e5799 0%,#207cca 44%,#207cca 44%,#2989d8 50%,#7db9e8 73%,#7db9e8 73%,#7db9e8 87%);
+            background: linear-gradient(to bottom,  #1e5799 0%,#207cca 44%,#207cca 44%,#2989d8 50%,#7db9e8 73%,#7db9e8 73%,#7db9e8 87%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0);
+        }
+
+        .popup-signup {
+            background: #1e5799;
+            background: -moz-linear-gradient(top,  #1e5799 0%, #207cca 44%, #207cca 44%, #2989d8 50%, #7db9e8 73%, #7db9e8 73%, #7db9e8 87%);
+            background: -webkit-linear-gradient(top,  #1e5799 0%,#207cca 44%,#207cca 44%,#2989d8 50%,#7db9e8 73%,#7db9e8 73%,#7db9e8 87%);
+            background: linear-gradient(to bottom,  #1e5799 0%,#207cca 44%,#207cca 44%,#2989d8 50%,#7db9e8 73%,#7db9e8 73%,#7db9e8 87%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
+        }
+
+        .popup-profile {
+            background: #1e5799;
+            background: -moz-linear-gradient(top,  #1e5799 0%, #207cca 44%, #207cca 44%, #2989d8 50%, #7db9e8 73%, #7db9e8 73%, #7db9e8 87%);
+            background: -webkit-linear-gradient(top,  #1e5799 0%,#207cca 44%,#207cca 44%,#2989d8 50%,#7db9e8 73%,#7db9e8 73%,#7db9e8 87%);
+            background: linear-gradient(to bottom,  #1e5799 0%,#207cca 44%,#207cca 44%,#2989d8 50%,#7db9e8 73%,#7db9e8 73%,#7db9e8 87%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
+        }
+        
+        .pac-container {
+            z-index: 20000;
+        }
+        
+        .fit {
+            /* set relative picture size */
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .center {
+            display: block;
+            margin: auto;
+        }
+        
+        .img-circle {
+            border-radius: 50%;
+            border: 1px solid cyan;
+        }
+        
+        .event-circle {
+            border-radius: 30%;
+        }
+        
+        #eventdetailloader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fefefe;
+            z-index: 99;
+            height: 100%;
+        }
+        
+        #eventdetailstatus {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background-image: url(img/loading.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: -100px 0 0 -100px;
+        }
+        
+        #eventlistloader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fefefe;
+            z-index: 99;
+            height: 100%;
+        }
+        
+        #eventliststatus {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background-image: url(img/loading.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: -100px 0 0 -100px;
+        }
+        
+        #chatlistloader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fefefe;
+            z-index: 99;
+            height: 100%;
+        }
+        
+        #chatliststatus {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background-image: url(img/loading.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: -100px 0 0 -100px;
+        }
+
+        #profileloader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fefefe;
+            z-index: 99;
+            height: 100%;
+        }
+        
+        #profilestatus {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background-image: url(img/loading.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: -100px 0 0 -100px;
+        }
+        
+        #indexlistloader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fefefe;
+            z-index: 99;
+            height: 100%;
+        }
+        
+        #indexliststatus {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background-image: url(img/loading.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: -100px 0 0 -100px;
+        }
+        
+        .infinite-scroll-preloader {
+            margin-top: -20px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .infinite-scroll-preloader .preloader {
+            width: 34px;
+            height: 34px;
+        }
+        
+        .input-login-form {
+            background: #D5F5EF;
+            color: #999999;
+            border: 2px solid #A9F1F2;
+            border-radius: 6px;
+            font-size: 15px;
+            height: 20px;
+            line-height: 25px;
+            width: 100%;
+            padding: 10px;
+            padding-top: 5px;
+            box-shadow: 0px 0px 8px #DCDCDC;
+            -webkit-box-shadow: 0px 0px 8px #DCDCDC;
+            -moz-box-shadow: 0px 0px 8px #DCDCDC;
+        }
+        
+        .login-button {
+            display: inline-block;
+            width: 100%;
+            height: 45px;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: #2E2EFE;
+            color: white;
+            font-size: 16px;
+            line-height: 26px;
+            text-align: center;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <!-- <div class="statusbar-overlay"></div> -->
+    <!-- Panels overlay-->
+    <!-- <div class="panel-overlay"></div> -->
+    <div class="views">
+        <div class="view view-main">
+            <div class="pages">
+                <!-- <div id="customloader"><div id="customstatus">&nbsp;</div></div> -->
+                <!-- <div class="page navbar-fixed toolbar-fixed" data-page="index">
+                    <div class="navbar theme-indigo">
+                        <div class="navbar-inner">
+                            <div class="left"><img src="img/small-logo.png" style="padding-left:15px" width="25px" height="25px"></div>
+                            <div class="center sliding" style="padding-left:0px;">Go Fish</div>
+                            <div class="right"></div>
+                        </div>
+                    </div>
+                    <form class="searchbar searchbar-init" data-search-list=".list-block-search" data-search-in=".item-title" data-found=".searchbar-found" data-not-found=".searchbar-not-found">
+                        <div class="searchbar-input">
+                            <input id="txt_search" type="search" placeholder="Search">
+                            <a href="#" class="searchbar-clear"></a>
+                        </div>
+                    </form>
+
+                    <div class="searchbar-overlay"></div>
+                    <div id="latest_event_div" class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="65" data-distance="100">
+                        <div id="indexlistloader">
+                            <div id="indexliststatus">&nbsp;</div>
+                        </div>
+                        <div class="pull-to-refresh-layer">
+                            <div class="preloader"></div>
+                            <div class="pull-to-refresh-arrow"></div>
+                        </div>
+                        <div id="content_latest_events">
+                            <div class="content-block-title"><b>List of Events</b></div>
+                            <div class="list-block media-list">
+                                <ul id="latest_event_list">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="infinite-scroll-preloader">
+                            <div class="preloader"></div>
+                        </div>
+                    </div>
+                    <div class="toolbar toolbar-bottom theme-gray">
+                        <div class="toolbar-inner"><a href="event_list.html" class="link"><i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i></a><a id="link_index" href="index.html" class="link"><img src="img/small-logo.png" width="23px" height="23px"></a><a href="profile.html" class="link"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a></div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen modal-in">
+        <!-- <div class="login-screen"> -->
+        <div class="view">
+            <div class="page">
+                <div class="page-content login-screen-content">
+                    <br />
+                    <br />
+                    <div class="login-screen-title">
+                        <img src="img/gofishlogo.png" width="90px" height="150px">
+                    </div>
+                    <form>
+                        <div class="list-block" style="margin-left:10px; margin-right:10px;">
+                            <ul>
+                                <!-- <li>
+                                    <center><fb:login-button id="btn_fblogin" data-size="xlarge" scope="public_profile,email,user_birthday" onlogin="checkLoginState();"></fb:login-button></center>
+                                    <br />
+                                </li> -->
+                                <li>
+                                    <center>
+                                        <img id="btn_fblogin" class="button button-big" src="img/fb_btn.png" width="240px" height="130px" onclick="FBLogin();" />
+                                    </center>
+                                    <br />
+                                </li>
+                                <li class="item-content" style="padding-left:0px">
+                                    <div class="input-login-form">
+                                        <input id="txt-username" type="text" name="username" placeholder="Email">
+                                    </div>
+                                </li>
+                                <li class="item-content" style="padding-left:0px">
+                                    <div class="input-login-form">
+                                        <input id="txt-password" type="password" name="password" placeholder="Password">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-block" style="margin-left:10px; margin-right:10px;">
+                            <ul>
+                                <li><a href="" id="btn-signin" class="button button-big button-fill color-indigo">Sign In</a></li>
+                                <li><a href="" id="btn-goto-signup" data-popup=".popup-signup" class="open-signup button button-big button-fill color-blue">Sign Up</a></li>
+                                <!-- <li><a href="" id="btn-fblogin" onclick="facebookLogin();" class="button button-big button-fill color-indigo">Facebook Login</a></li> -->
+                                <!-- <br /> -->
+                                <!-- <li><a href="" id="btn-fblogin" onclick="Login();" style="align:center;"><center><img src="img/fb.png" width="250px" height="45px"></a></li> -->
+                                <br />
+                                <li><a href="#" id="btn_forgot_pass"><center><font color="#808080"><b>Forgot Password?</b></font></center></a></li>
+                            </ul>
+                        </div>
+                        <!-- For Facebook debugging -->
+                        <!-- <div id="status"></div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="fb-root"></div>
+    </div>
+    <!-- End of Login Screen -->
+
+    <!-- Signup Screen -->
+    <div class="popup popup-signup">
+        <div class="content-block">
+            <br />
+            <br />
+            <div class="login-screen-title">
+                <img src="img/gofishlogo.png" width="90px" height="150px">
+            </div>
+            <br />
+            <div class="list-block" style="margin-left:10px; margin-right:10px;">
+                <ul>
+                    <li>
+                        <div class="item-content" style="padding-left:0px">
+                            <div class="input-login-form">
+                                <input id="txt-su-email" type="text" placeholder="Email" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0px">
+                            <div class="input-login-form">
+                                <input id="txt-su-password" type="password" placeholder="Password" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0px">
+                            <div class="input-login-form">
+                                <input id="txt-su-repeatpassword" type="password" placeholder="Repeat password" />
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </li>
+                </ul>
+                <div class="content-block">
+                    <div class="row">
+                        <div class="col-50"><a id="btn-back-signup" href="#" class="close-popup button button-big button-fill color-cyan">Sign in</a></div>
+                        <div class="col-50">
+                            <input type="submit" id="btn-signup" value="Submit" class="button button-big button-fill color-indigo" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Signup Screen -->
+
+    <!-- Profile Screen -->
+    <div class="popup popup-profile">
+        <div class="content-block">
+            <br />
+            <br />
+            <div class="login-screen-title">
+                <div onclick="getProfileImage();">
+                    <!-- <img src="img/gofishlogo.png" width="110px" height="200px"> -->
+                    <img id="edit_profile_pic" class="img-circle fit center" width=100px; height=100px; src="img/profile.jpg" />
+                </div>
+            </div>
+            <br />
+            <div class="list-block" style="margin-left:10px; margin-right:10px;">
+                <ul>
+                    <li>
+                        <div class="item-content" style="padding-left:0px">
+                            <div class="input-login-form">
+                                <input id="txt-p-firstname" type="text" placeholder="First name" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0px">
+                            <div class="input-login-form">
+                                <input id="txt-p-lastname" type="text" placeholder="Last name" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0px">
+                            <div class="input-login-form">
+                                <input id="txt-p-age" type="number" placeholder="Age" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0px">
+                            <div class="input-login-form">
+                                <input id="txt-p-description" type="text" placeholder="Description" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="content-block">
+                    <div class="row">
+                        <div class="col-50"><a id="btn-skip" href="#" class="close-popup button button-big button-fill color-cyan">Skip</a></div>
+                        <div class="col-50">
+                            <a id="btn-profile" href="#" class="close-popup button button-big button-fill color-indigo">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Profile Screen -->
+
+    <!-- Create event Screen -->
+    <!-- <div class="popup popup-createevent"> -->
+    <div data-page="create_event" class="popup popup-createevent navbar-fixed">
+        <div class="page">
+            <div class="navbar theme-indigo">
+                <div class="navbar-inner">
+                    <div class="left">
+                        <a href="event_list.html" class="close-popup link"> <i class="icon icon-back"></i></a>
+                    </div>
+                    <div class="center sliding">Create Event</div>
+                    <div class="right"></div>
+                </div>
+            </div>
+            <div class="page-content" style="padding-top:40px;">
+                <!-- <div class="content-block"> -->
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            <div class="item-content" style="padding-left:0px; margin-left:5px; margin-right:5px;">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <!-- <div class="item-inner"> -->
+                                <div id="image-upload" onclick="getEventImage();" style="width:100%; margin-top:10px;">
+                                    <img id="event_image" class="fit center" src="img/uploadevent3.png" style="padding-left:0px; width:80%; height:200px; border-radius:5px;" />
+                                    <br />
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">Name</div> -->
+                                    <div class="item-input">
+                                        <input id="txt-eventname" type="text" placeholder="I Feel Like..." required="required" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">Name</div> -->
+                                    <div class="item-input">
+                                        <input id="txt-eventdate" type="date" placeholder="Date" value="" required="required" />
+                                    </div>
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">Name</div> -->
+                                    <div class="item-input">
+                                        <input id="txt-location" type="text" placeholder="Location" required="required" />
+                                    </div>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">Name</div> -->
+                                    <div class="item-input">
+                                        <!-- <input id="txt-eventdescription" type="text" placeholder="Description" /> -->
+                                        <div class="item-input">
+                                            <textarea id="txt-eventdescription" class="resizable" placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-title label" style="width:100%">With people between:</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">With people between:</div> -->
+                                    <div class="item-title label">Min age:</div>
+                                    <div class="item-input">
+                                        <!-- <input id="txt-age" type="text" /> -->
+                                        <input id="txt-min-age" type="number" placeholder="0"/>
+                                    </div>
+                                    <div class="item-title label">Max age:</div>
+                                    <div class="item-input" style="padding-left:10px;">
+                                        <input id="txt-max-age" type="number" placeholder="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- <li>
+                            <div class="item-content">
+                                <div class="item-title label" style="width:100%">Max participants:</div>
+                            </div>
+                        </li> -->
+                        <li>
+                          <div class="item-content">
+                            <div class="item-inner"> 
+                              <div class="item-title label">Max participants: </div>
+                              <div class="item-input">
+                                <input id="txt-participants" type="number" placeholder="Max participants"/>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                    </ul>
+                    <div class="list-block" style="margin-left:10px; margin-right:10px;">
+                        <ul>
+                            <li><a href="#" id="btn-createevent" class="button button-big button-fill color-indigo">Submit</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- End of Create event Screen -->
+
+    <!-- Edit event Screen -->
+    <!-- <div class="popup popup-createevent"> -->
+    <div data-page="edit_event" class="popup popup-editevent navbar-fixed">
+        <div class="page">
+            <div class="navbar theme-indigo">
+                <div class="navbar-inner">
+                    <div class="left">
+                        <a href="#" id="btn_back_event" class="close-popup link"> <i class="icon icon-back"></i></a>
+                    </div>
+                    <div class="center sliding">Edit Event</div>
+                    <div class="right"></div>
+                </div>
+            </div>
+            <div class="page-content" style="padding-top:40px;">
+                <!-- <div class="content-block"> -->
+                <div class="list-block">
+                    <ul>
+                        <!-- <li>
+                            <div class="item-content" style="padding-left:0px; margin-left:5px; margin-right:5px;">
+                                <div onclick="getEditEventImage();" style="width:100% margin-top:10px;">
+                                    <img id="edit_event_image" class="fit center" src="img/uploadevent3.png" style="padding-left:0px; width:100%; height:200px; border-radius:5px;" />
+                                    <br />
+                                </div>
+                            </div>
+                        </li> -->
+                        <li>
+                            <div class="item-content" style="padding-left:0px; margin-left:5px; margin-right:5px;">
+                                <div onclick="getEditEventImage();" style="width:100%; margin-top:10px;">
+                                    <img id="edit_event_image" class="fit center" src="img/uploadevent3.png" style="padding-left:0px; width:80%; height:200px; border-radius:5px;" />
+                                    <br />
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">Name</div> -->
+                                    <div class="item-input">
+                                        <input id="edit-txt-eventname" type="text" placeholder="I Feel Like..." required="required" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">Name</div> -->
+                                    <div class="item-input">
+                                        <input id="edit-txt-eventdate" type="date" placeholder="Date" value="" required="required" />
+                                    </div>
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">Name</div> -->
+                                    <div class="item-input">
+                                        <input id="edit-txt-location" type="text" placeholder="Location" required="required" />
+                                    </div>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <!-- <div class="item-title label">Name</div> -->
+                                    <div class="item-input">
+                                        <!-- <input id="txt-eventdescription" type="text" placeholder="Description" /> -->
+                                        <div class="item-input">
+                                            <textarea id="edit-txt-eventdescription" class="resizable" placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-title label" style="width:100%">With people between:</div>
+                            </div>
+                        </li>
+                        <!-- <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input">
+                                        <input id="edit-txt-age" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li> -->
+                        <li>
+                            <div class="item-content">
+                                <!-- <div class="item-media"><i class="icon icon-form-name"></i></div> -->
+                                <div class="item-inner">
+                                    <div class="item-title label">Min age:</div>
+                                    <div class="item-input">
+                                        <!-- <input id="txt-age" type="text" /> -->
+                                        <input id="edit-txt-min-age" type="number" placeholder="0"/>
+                                    </div>
+                                    <div class="item-title label">Max age:</div>
+                                    <div class="item-input" style="padding-left:10px;">
+                                        <input id="edit-txt-max-age" type="number" placeholder="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- <li>
+                            <div class="item-content">
+                                <div class="item-title label" style="width:100%">Max participants:</div>
+                            </div>
+                        </li> -->
+                        <li>
+                          <div class="item-content">
+                            <div class="item-inner"> 
+                              <div class="item-title label">Max participants: </div>
+                              <div class="item-input">
+                                <input id="edit-txt-participants" type="number" placeholder="Max participants"/>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                    </ul>
+                    <div class="list-block" style="margin-left:10px; margin-right:10px;">
+                        <ul>
+                            <li><a href="#" id="btn-editevent" class="button button-big button-fill color-indigo">Update</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- End of Edit event Screen -->
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <!-- Google Map API -->
+    <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC62QbeQTbzSZBDeWcd05hRJm1mhTXaSuI&libraries=places"></script> -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB1_IdI7EpTLKaptA4oXeCL2_nlMrUuGH4&libraries=places"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Ion range slider -->
+    <script type="text/javascript" src="js/ion.rangeSlider.js"></script>
+    <!-- jQuery date & time picker -->
+    <script type="text/javascript" src="js/jquery.datetimepicker.full.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <!-- Fast click -->
+    <script type="text/javascript" src="js/fastclick.js"></script>
+    <!-- Facebook -->
+    <!-- <script type="text/javascript" src="js/facebookConnectPlugin.js"></script> -->
+</body>
+
+</html>

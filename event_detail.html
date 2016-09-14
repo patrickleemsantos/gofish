@@ -1,0 +1,45 @@
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+  <div class="page navbar-fixed toolbar-fixed" data-page="event_detail">
+    <div class="navbar theme-indigo">
+      <div class="navbar-inner">
+        <div class="left"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+        <div class="center">Event</div>
+        <div class="right">
+          <a href="#" id="btn_edit_event" class="link icon-only open-popup" data-popup=".popup-editevent">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </a>
+          <a href="#" id="btn_chat" class="link icon-only">
+            <i class="fa fa-commenting" aria-hidden="true"></i>
+          </a>
+        </div> 
+      </div>
+    </div>
+    <div id="eventdetailloader">
+      <div id="eventdetailstatus">&nbsp;</div>
+    </div>
+    <div id="detail" class="page-content" style="padding-top:70px;">
+      <div id="eimage" style="margin-left:5px; margin-right:5px;">
+        <img id="pimage" class="lazy lazy-fadein fit center" data-src="img/uploadevent3.png" style="padding-left:0px; width:80%; height:200px; border-radius:5px;"/>
+      </div>
+      <div class="list-block">
+        <ul id="event_detail">
+          <li>
+            <p class="buttons-row" style="margin-left:10px;margin-right:10px;">
+              <a href="#" id='btn_remove' class="confirm-ok button button-big button-fill button-raised color-gray">Remove</a>
+            </p> 
+            <p class="buttons-row" style="margin-left:10px;margin-right:10px;">
+              <a href="#" id='btn_attend' class="button button-big button-fill button-raised color-indigo">Attend</a>
+            </p>
+            <p class="buttons-row" style="margin-left:10px;margin-right:10px;">
+              <a href="#" id='btn_unattend' class="button button-big button-fill button-raised color-indigo">Unattend</a>
+            </p>
+          </li>
+          <li><div class="item-content"><div class="item-inner"></div></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="pages">
+  <div data-page="event_latest" class="page navbar-fixed toolbar-fixed">
+    <div class="navbar theme-indigo">
+        <div class="navbar-inner">
+            <div class="left"><img src="img/small-logo.png" style="padding-left:15px" width="25px" height="25px"></div>
+            <div class="center sliding" style="padding-left:0px;">Go Fish</div>
+            <div class="right"></div>
+        </div>
+    </div>
+    <form class="searchbar searchbar-init" data-search-list=".list-block-search" data-search-in=".item-title" data-found=".searchbar-found" data-not-found=".searchbar-not-found">
+        <div class="searchbar-input">
+            <input id="txt_search" type="search" placeholder="Search">
+            <a href="#" class="searchbar-clear"></a>
+        </div>
+        <!-- <a href="#" class="searchbar-cancel">Cancel</a> -->
+    </form>
+    <div class="searchbar-overlay"></div>
+    <div id="latest_event_div" class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="65" data-distance="100">
+          <!-- Start index page -->
+          <div id="indexlistloader">
+              <div id="indexliststatus">&nbsp;</div>
+          </div>
+          <div class="pull-to-refresh-layer">
+              <div class="preloader"></div>
+              <div class="pull-to-refresh-arrow"></div>
+          </div>
+          <div id="content_latest_events">
+              <div class="content-block-title"><b>List of Events</b></div>
+              <div class="list-block media-list">
+                  <ul id="latest_event_list">
+                      <!-- Fill out by jquery -->
+                  </ul>
+              </div>
+          </div>
+          <!-- Preloader -->
+          <div class="infinite-scroll-preloader">
+              <div class="preloader"></div>
+          </div>
+          <!-- End index page -->
+      </div>
+      <div class="toolbar toolbar-bottom theme-gray">
+          <div class="toolbar-inner"><a href="event_list.html" class="link"><i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i></a><a id="link_index" href="event_latest.html" class="link"><img src="img/small-logo.png" width="23px" height="23px"></a><a href="profile.html" class="link"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a></div>
+      </div>
+    </div>
+  </div>
+</div>
